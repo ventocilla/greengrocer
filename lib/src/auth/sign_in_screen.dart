@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'components/custom_text_field.dart';
+
 class SignInScreen extends StatelessWidget {
   const SignInScreen({Key? key}) : super(key: key);
 
@@ -28,25 +30,18 @@ class SignInScreen extends StatelessWidget {
                 color: Colors.white,
               ),
               child: Column(
+                // ignore: prefer_const_literals_to_create_immutables
                 children: [
                   //Email
-                  TextFormField(
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(30),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 20,
+                  const CustomTextField(
+                    icon: Icons.email,
+                    label: 'Email',
                   ),
                   //Senha
-                  TextFormField(
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(30),
-                      ),
-                    ),
+                  const CustomTextField(
+                    icon: Icons.lock,
+                    label: 'Senha',
+                    isObscure: true,
                   ),
                 ],
               ),

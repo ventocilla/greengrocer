@@ -33,15 +33,15 @@ class SignInScreen extends StatelessWidget {
                 // ignore: prefer_const_literals_to_create_immutables
                 children: [
                   //Email
-                  const CustomTextField(
+                  CustomTextField(
                     icon: Icons.email,
                     label: 'Email',
                   ),
                   //Senha
-                  const CustomTextField(
+                  CustomTextField(
                     icon: Icons.lock,
                     label: 'Senha',
-                    isObscure: true,
+                    isSecret: true,
                   ),
                 ],
               ),

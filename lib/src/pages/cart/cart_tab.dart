@@ -6,6 +6,8 @@ import 'package:greengrocer/src/services/utils_services.dart';
 // ignore: library_prefixes
 import 'package:greengrocer/src/config/app_data.dart' as appData;
 
+import 'components/cart_tile.dart';
+
 class CartTab extends StatelessWidget {
   CartTab({Key? key}) : super(key: key);
 
@@ -23,7 +25,9 @@ class CartTab extends StatelessWidget {
             child: ListView.builder(
               itemCount: appData.cartItems.length,
               itemBuilder: (_, index) {
-                return Text(appData.cartItems[index].item.itemName);
+                return CartTile(
+                  cartItem: appData.cartItems[index],
+                );
               },
             ),
           ),

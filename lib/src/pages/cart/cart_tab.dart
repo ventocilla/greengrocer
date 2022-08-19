@@ -6,12 +6,32 @@ import 'package:greengrocer/src/services/utils_services.dart';
 // ignore: library_prefixes
 import 'package:greengrocer/src/config/app_data.dart' as appData;
 
+import '../../models/cart_item_model.dart';
 import 'components/cart_tile.dart';
 
-class CartTab extends StatelessWidget {
+class CartTab extends StatefulWidget {
   CartTab({Key? key}) : super(key: key);
 
+  @override
+  State<CartTab> createState() => _CartTabState();
+}
+
+class _CartTabState extends State<CartTab> {
   final UtilsServices utilsServices = UtilsServices();
+
+  void removeCartItem(CartItemModel cartItem) {
+    setState(() {
+      appData.cartItems.remove(cartItem);
+    });
+  }
+
+  double cartTotalPrice() {
+    double total = 0;
+    for (var item in appData.cartItems) {
+      total += item.totalPrice();
+    }
+    return total;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -26,8 +46,7 @@ class CartTab extends StatelessWidget {
               itemCount: appData.cartItems.length,
               itemBuilder: (_, index) {
                 return CartTile(
-                  cartItem: appData.cartItems[index],
-                );
+                    cartItem: appData.cartItems[index], remove: removeCartItem);
               },
             ),
           ),
@@ -56,7 +75,7 @@ class CartTab extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  utilsServices.priceToCurrency(50.5),
+                  utilsServices.priceToCurrency(cartTotalPrice()),
                   style: TextStyle(
                     fontSize: 33,
                     color: CustomColors.customSwatchColor,

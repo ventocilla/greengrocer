@@ -97,10 +97,10 @@ class SignInScreen extends StatelessWidget {
                       label: 'Email',
                     ),
 
-                    //Senha
+                    //password
                     const CustomTextField(
                       icon: Icons.lock,
-                      label: 'Senha',
+                      label: 'password',
                       isSecret: true,
                     ),
 
@@ -128,13 +128,13 @@ class SignInScreen extends StatelessWidget {
                       ),
                     ),
 
-                    // Esqueceu a senha
+                    // Esqueceu a password
                     Align(
                       alignment: Alignment.centerRight,
                       child: TextButton(
                         onPressed: () {},
                         child: Text(
-                          'Esqueceu a senha?',
+                          'Esqueceu a password?',
                           style: TextStyle(
                             color: CustomColors.customContrastColor,
                           ),

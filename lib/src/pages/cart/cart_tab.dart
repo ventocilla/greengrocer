@@ -10,7 +10,7 @@ import '../../models/cart_item_model.dart';
 import 'components/cart_tile.dart';
 
 class CartTab extends StatefulWidget {
-  CartTab({Key? key}) : super(key: key);
+  const CartTab({Key? key}) : super(key: key);
 
   @override
   State<CartTab> createState() => _CartTabState();

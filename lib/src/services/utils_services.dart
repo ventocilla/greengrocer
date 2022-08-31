@@ -1,5 +1,4 @@
-//import 'package:greengrocer/src/services/intl';
-
+import 'package:intl/date_symbol_data_local.dart';
 import 'package:intl/intl.dart';
 
 class UtilsServices {
@@ -9,4 +8,14 @@ class UtilsServices {
 
     return numberFormat.format(price);
   }
+
+  // Data to String
+  //*
+  String formatDateTime(DateTime dateTime) {
+    initializeDateFormatting();
+
+    DateFormat dateformat = DateFormat.yMd('pt_BR').add_Hm();
+    return dateformat.format(dateTime);
+  }
+  //*/
 }

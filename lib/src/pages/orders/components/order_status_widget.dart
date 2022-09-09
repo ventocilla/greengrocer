@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 
 import '../../../config/custom_colors.dart';
@@ -30,14 +28,11 @@ class OrderStatusWidget extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        //
         const _StatusDot(
           isActive: true,
           title: 'Pedido confirmado',
         ),
-
         const _CustomDivider(),
-
         if (currentStatus == 1) ...[
           const _StatusDot(
             isActive: true,
@@ -50,7 +45,27 @@ class OrderStatusWidget extends StatelessWidget {
             title: 'Pagamento Pix vencido',
             backgroundColor: Colors.red,
           ),
-        ]
+        ] else ...[
+          _StatusDot(
+            isActive: currentStatus >= 2,
+            title: 'Pagamento',
+          ),
+          const _CustomDivider(),
+          _StatusDot(
+            isActive: currentStatus >= 3,
+            title: 'Preparando',
+          ),
+          const _CustomDivider(),
+          _StatusDot(
+            isActive: currentStatus >= 4,
+            title: 'Envio',
+          ),
+          const _CustomDivider(),
+          _StatusDot(
+            isActive: currentStatus == 5,
+            title: 'Entregue',
+          ),
+        ],
       ],
     );
   }

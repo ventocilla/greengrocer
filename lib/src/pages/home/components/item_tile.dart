@@ -7,10 +7,13 @@ import '../../product/product_screen.dart';
 
 class ItemTile extends StatelessWidget {
   final ItemModel item;
+  final void Function(GlobalKey) cartAnimationMethod;
+  final GlobalKey imageGk = GlobalKey();
 
   ItemTile({
     Key? key,
     required this.item,
+    required this.cartAnimationMethod,
   }) : super(key: key);
 
   final UtilsServices utilsServices = UtilsServices();
@@ -49,6 +52,7 @@ class ItemTile extends StatelessWidget {
                       tag: 'item.imgUrl',
                       child: Image.asset(
                         item.imgUrl,
+                        key: imageGk,
                       ),
                     ),
                   ),
@@ -95,7 +99,7 @@ class ItemTile extends StatelessWidget {
           right: 4,
           child: GestureDetector(
             onTap: () {
-              // ..
+              cartAnimationMethod(imageGk);
             },
             child: Container(
               height: 40,

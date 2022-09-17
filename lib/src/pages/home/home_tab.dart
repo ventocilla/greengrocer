@@ -2,9 +2,11 @@ import 'package:add_to_cart_animation/add_to_cart_animation.dart';
 import 'package:add_to_cart_animation/add_to_cart_icon.dart';
 import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:greengrocer/src/config/custom_colors.dart';
 
 import '../../config/app_data.dart' as appData;
+import '../../services/utils_services.dart';
 import 'components/category_tile.dart';
 import 'components/item_tile.dart';
 
@@ -24,6 +26,8 @@ class _HomeTabState extends State<HomeTab> {
     runAddToCartAnimation(gkImage);
   }
 
+  final UtilsServices utilsServices = UtilsServices();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,24 +36,32 @@ class _HomeTabState extends State<HomeTab> {
         backgroundColor: Colors.transparent,
         elevation: 0,
         centerTitle: true,
-        title: Text.rich(TextSpan(
-            style: const TextStyle(
-              fontSize: 30,
-            ),
-            children: [
-              TextSpan(
-                text: 'Green',
-                style: TextStyle(
-                  color: CustomColors.customSwatchColor,
-                ),
+        title: GestureDetector(
+          onTap: () {
+            utilsServices.showToast(
+              message: 'Olá Mundo',
+              isError: true,
+            );
+          },
+          child: Text.rich(TextSpan(
+              style: const TextStyle(
+                fontSize: 30,
               ),
-              TextSpan(
-                text: 'grocer',
-                style: TextStyle(
-                  color: CustomColors.customContrastColor,
+              children: [
+                TextSpan(
+                  text: 'Green',
+                  style: TextStyle(
+                    color: CustomColors.customSwatchColor,
+                  ),
                 ),
-              ),
-            ])),
+                TextSpan(
+                  text: 'grocer',
+                  style: TextStyle(
+                    color: CustomColors.customContrastColor,
+                  ),
+                ),
+              ])),
+        ),
         actions: [
           Padding(
             padding: const EdgeInsets.only(

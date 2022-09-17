@@ -36,32 +36,24 @@ class _HomeTabState extends State<HomeTab> {
         backgroundColor: Colors.transparent,
         elevation: 0,
         centerTitle: true,
-        title: GestureDetector(
-          onTap: () {
-            utilsServices.showToast(
-              message: 'Olá Mundo',
-              isError: true,
-            );
-          },
-          child: Text.rich(TextSpan(
-              style: const TextStyle(
-                fontSize: 30,
+        title: Text.rich(TextSpan(
+            style: const TextStyle(
+              fontSize: 30,
+            ),
+            children: [
+              TextSpan(
+                text: 'Green',
+                style: TextStyle(
+                  color: CustomColors.customSwatchColor,
+                ),
               ),
-              children: [
-                TextSpan(
-                  text: 'Green',
-                  style: TextStyle(
-                    color: CustomColors.customSwatchColor,
-                  ),
+              TextSpan(
+                text: 'grocer',
+                style: TextStyle(
+                  color: CustomColors.customContrastColor,
                 ),
-                TextSpan(
-                  text: 'grocer',
-                  style: TextStyle(
-                    color: CustomColors.customContrastColor,
-                  ),
-                ),
-              ])),
-        ),
+              ),
+            ])),
         actions: [
           Padding(
             padding: const EdgeInsets.only(
